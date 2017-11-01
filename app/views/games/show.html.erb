@@ -2,17 +2,11 @@
 <%= game.id %>
 <%= game.player1 %>
 
+
+<% if game.turn_id != session[:user_id] %>
+
 <div class="my-turn">
-<%= form_with scope: :vote, url: votes_path, local: true do |form| %>
-  </p>
-  <p>
-    <%= form.submit "My Turn?" %>
-  </p>
-<%end%>
+<%= button_to 'My Turn', game_path(game), :method => :patch %>
 </div>
+<% end %>
 
-<div class="im-done">
-<%= button_to() %>
-
-<%end%>
-</div>

@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   resources :games, :players
 
-  patch 'games/:id', to: 'games#my_turn'
 
 
 
