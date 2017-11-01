@@ -1,0 +1,18 @@
+<h1> Game show page </h1>
+<%= game.id %>
+<%= game.player1 %>
+
+<div class="my-turn">
+<%= form_with scope: :vote, url: votes_path, local: true do |form| %>
+  </p>
+  <p>
+    <%= form.submit "My Turn?" %>
+  </p>
+<%end%>
+</div>
+
+<div class="im-done">
+<%= button_to() %>
+
+<%end%>
+</div>

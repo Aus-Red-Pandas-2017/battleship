@@ -11,6 +11,23 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+ <header>
+  <h1>Shiply</h1>
+  <p>
+    <% if session[:user_id] %>
+
+    <!-- <#%= link_to sessions_path, method: :delete do %> -->
+      Player ID: <%= session[:user_id] %>
+    <!-- <%# end %> -->
+
+
+    <% else %>
+      <a href="/login">Login</a>
+      <a href="/users/new">Register</a>
+    <%end%>
+    <a href="/">Home</a>
+  </p>
+</header>
 
   <body>
     <%= yield %>
