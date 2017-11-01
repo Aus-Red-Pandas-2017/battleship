@@ -1,4 +1,22 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
+.coord {
+  background-color: lightgrey;
+  height: 50px;
+  width: 50px;
+}
+
+.my_board .coord {
+  background-color: lightblue;
+  height: 50px;
+  width: 50px;
+
+}
+.opponent_board .coord {
+  background-color: pink;
+  height: 50px;
+  width: 50px;
+
+}
 
 * {
   margin: 0;
