@@ -1,5 +1,8 @@
 class GamesController < ApplicationController
-  def index
 
+
+  def index
   end
+
+
 end

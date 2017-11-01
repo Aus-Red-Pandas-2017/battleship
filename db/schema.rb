@@ -10,12 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171101181104) do
+ActiveRecord::Schema.define(version: 20171101192954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "coordinates", force: :cascade do |t|
+    t.string "x_position"
+    t.integer "y_position"
+    t.boolean "is_hit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "game_ship_coordinates", force: :cascade do |t|
+    t.integer "game_ship_id"
+    t.integer "coordinate_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "game_ships", force: :cascade do |t|
+    t.integer "game_id"
+    t.integer "player_id"
+    t.integer "ship_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "games", force: :cascade do |t|
+    t.integer "winner_id"
+    t.integer "player1_id"
+    t.integer "player2_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "players", force: :cascade do |t|
+    t.string "username"
+    t.string "password_hash"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ships", force: :cascade do |t|
+    t.string "name"
+    t.integer "length"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
