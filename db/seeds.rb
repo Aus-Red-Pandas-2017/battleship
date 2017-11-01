@@ -17,12 +17,12 @@ y_positions = [1,2,3,4,5,6,7,8,9,10]
 
 x=0
 y=0
-while x < x_positions.length
+while y < x_positions.length
   Coordinate.create(x_position: x_positions[x], y_position: y_positions[y], is_hit: false )
-  y+=1
-    if y == 10
-      y = 0
-      x+=1
+  x+=1
+    if x == 10
+      x = 0
+      y+=1
     end
 end
 
