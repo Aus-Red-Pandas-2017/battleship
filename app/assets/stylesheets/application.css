@@ -13,6 +13,14 @@ div {
 
 }
 
+.set_ship_form {
+  /*border: 1px solid red;*/
+  float: right;
+  display: inline-block;
+  margin-right: 50%;
+
+}
+
 .clicked {
   border: black dotted;
 }

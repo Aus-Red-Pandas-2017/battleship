@@ -30,7 +30,7 @@ $(document).ready(function(){
       $(this).addClass("clicked");
       var clicked_coordinate = ($(this).data("coordinate"));
       console.log($(this).data("id"));
-      $(".coordinate_box").append(clicked_coordinate);
+      $(".coordinate_box .pasta").val(clicked_coordinate);
   });
 
  $("form #ships").click(function(){

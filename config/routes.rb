@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'home/index'
   resources :sessions
   resources :players
+  resources :game_ships
   resources :games do
     member do
       get 'check'
