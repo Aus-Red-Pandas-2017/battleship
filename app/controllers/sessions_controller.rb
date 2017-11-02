@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
 
   def create
     @player = Player.authenticate(params['session']['username'])
+
       if @player #&& @player.password == params['session']['password']
           session[:user_id] = @player.id
           redirect_to '/games/1'
