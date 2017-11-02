@@ -21,14 +21,14 @@ class GamesController < ApplicationController
  # Game.find(params[:id]).game_ships.find(session[:user_id]).game_ship_coordinates
 
   def ships
-    binding.pry
+    b
     active_player_ships = Game.find(params[:id]).game_ships.find(session[:user_id]).game_ship_coordinates
     active_player_coords = []
     active_player_ships.each do |coord|
       active_player_coords << coord.coordinate_id
     end
 
-    binding.pry
+
     @game = Game.find(params[:id])
 
   end
