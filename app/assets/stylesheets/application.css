@@ -1,9 +1,33 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
+/*
+div {
+  border: 1px solid red;
+}*/
+
+.title {
+  text-align: center;
+}
+
 .coord {
   background-color: lightgrey;
   height: 50px;
   width: 50px;
 }
+
+.my_board{
+  display: inline-block;
+  text-align: center;
+  float: right;
+  margin-right: 15%;
+}
+
+.opponent_board{
+  display: inline-block;
+  text-align: center;
+  float: left;
+  margin-left: 15%;
+}
+
 
 .my_board .coord {
   background-color: lightblue;
