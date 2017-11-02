@@ -1,9 +1,21 @@
 Rails.application.routes.draw do
 
   get 'home/index'
+  resources :sessions
+  resources :players
+  resources :games do
+    member do
+      get 'check'
+      patch 'pass'
+    end
+  end
 
-  resources :games
+  get "logout", to: 'sessions#destroy',  as: :logout_my_shit
+
+  get "login",to: 'sessions#new'
+
+  post "login", to: 'sessions#create'
 
   root to: "games#index"
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
 end
