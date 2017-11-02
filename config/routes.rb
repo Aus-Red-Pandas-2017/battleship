@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :sessions
   resources :players
   resources :game_ships
-  resources :games do
+  resources :games, except: [:new] do
     member do
       get 'check'
       patch 'pass'

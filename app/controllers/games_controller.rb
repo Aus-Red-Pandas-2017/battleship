@@ -8,13 +8,10 @@ class GamesController < ApplicationController
     render locals: {game: game}
   end
 
-  def new
-    active_player_ships = Game.find(params[:id]).game_ships.find(session[:user_id]).game_ship_coordinates
-    active_player_coords = []
-    active_player_ships.each do |coord|
-      active_player_coords << coord.coordinate_id
-  end
-   player_ships = active_player_coords
+
+ def create
+  @game = Game.create
+  redirect_to @game
  end
 
 
