@@ -1,25 +1,23 @@
 class SessionsController < ApplicationController
 
-  def index
+  def new
 
-  end
-
-  def show
   end
 
   def create
-    @user = User.authenticate(params['logins']['email'])
-      if @user && @user.password == params['logins']['password']
-          session[:user_id] = @user.id
-          redirect_to '/'
+    @player = Player.authenticate(params['session']['username'])
+    binding.pry
+      if @player #&& @player.password == params['session']['password']
+          session[:user_id] = @player.id
+          redirect_to '/games/1'
       else
-        redirect_to '/'
+        redirect_to '/games/1'
       end
   end
 
   def destroy
-    session[:user_id]= nil
-    redirect_to root_url
+    session[:user_id] = nil
+    redirect_to '/games/1'
   end
 
 end
