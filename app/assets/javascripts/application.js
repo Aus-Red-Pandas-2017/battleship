@@ -5,6 +5,22 @@ $(document).ready(function(){
       }, function(){
       $(this).css("background-color", "blue");
   });
+
+  $(".set_board td.coord").click(function(){
+      $(this).css("background-color", "green");
+      $(this).addClass("clicked");
+      var clicked_coordinate = ($(this).data("coordinate"));
+      $(".coordinate_box").append(clicked_coordinate);
+
+  });
+ $("form #ships").click(function(){
+      // var form = $(this)
+      // var carrier = form.children("#carrier")
+
+      console.log(this);
+
+ })
+
 })
 
 // // Variables

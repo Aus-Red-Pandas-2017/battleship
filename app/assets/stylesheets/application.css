@@ -8,6 +8,10 @@ div {
   text-align: center;
 }
 
+.clicked {
+  border: black dotted;
+}
+
 .coord {
   background-color: lightgrey;
   height: 50px;
