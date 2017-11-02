@@ -7,6 +7,28 @@ class GamesController < ApplicationController
   end
 
   def new
+    active_player_ships = Game.find(params[:id]).game_ships.find(session[:user_id]).game_ship_coordinates
+    active_player_coords = []
+    active_player_ships.each do |coord|
+      active_player_coords << coord.coordinate_id
+  end
+   player_ships = active_player_coords
+ end
+
+
+ # Game.find(params[:id]).game_ships.find(session[:user_id]).game_ship_coordinates
+
+  def ships
+    binding.pry
+    active_player_ships = Game.find(params[:id]).game_ships.find(session[:user_id]).game_ship_coordinates
+    active_player_coords = []
+    active_player_ships.each do |coord|
+      active_player_coords << coord.coordinate_id
+    end
+
+    binding.pry
+    @game = Game.find(params[:id])
+
   end
 
   def edit
@@ -32,18 +54,13 @@ class GamesController < ApplicationController
   end
 
   def pass
-
     @game = Game.find_by(id: params[:id].to_i)
     if @game.turn_id = session[:user_id]
      active = @game.turn_id
-
      case active
-
      when @game.player1_id
-
       @game.turn_id = @game.player2_id
      when @game.player2_id
-
       @game.turn_id = @game.player1_id
      end
     else
@@ -51,7 +68,6 @@ class GamesController < ApplicationController
     end
     @game.save
     redirect_to@game
-
   end
 
 
