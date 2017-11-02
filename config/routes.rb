@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'games/:id/ships', to: 'games#ships'
+
   get "logout", to: 'sessions#destroy',  as: :logout_my_shit
 
   get "login",to: 'sessions#new'
