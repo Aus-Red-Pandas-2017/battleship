@@ -8,6 +8,11 @@ div {
   text-align: center;
 }
 
+.player_ships {
+  background-color: black;
+
+}
+
 .clicked {
   border: black dotted;
 }
