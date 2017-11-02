@@ -1,13 +1,56 @@
 <h1> Game show page </h1>
 
+<div class="poll_buttons">
+  <div class="pass">
+  <%= button_to 'Pass', pass_game_path(game), :method => :patch %>
+  </div>
+
+  <div class="check">
+  <%= button_to 'Check', check_game_path(game), :method => :get, remote: true %>
+  </div>
+</div>
+
+<div class="create_board">
+  <div class="set_board">
+    <h1>Set your board</h1>
+    <%= render "shared/new_board" %>
+  </div>
 
 
-<div class="pass">
-<%= button_to 'Pass', pass_game_path(game), :method => :patch %>
+  <div class="set_ship_form">
+    <%=  form_tag(controller: "games", action: "ships", method: "post") do %>
+
+      <h3>Pick your ship</h3>
+      <%= radio_button_tag(:ship, "carrier") %>
+      <%= label_tag(:carrier, "Carrier") %><br>
+      <%= radio_button_tag(:ship, "battleship") %>
+      <%= label_tag(:battleship, "Battleship") %><br>
+      <%= radio_button_tag(:ship, "submarine") %>
+      <%= label_tag(:submarine, "Submarine") %><br>
+      <%= radio_button_tag(:ship, "cruiser") %>
+      <%= label_tag(:cruiser, "Cruiser") %><br>
+      <%= radio_button_tag(:ship, "destroyer") %>
+      <%= label_tag(:destroyer, "Destroyer") %><br>
+      <br>
+
+      <h3>Select orientation</h3>
+      <%= radio_button_tag(:orientation, "horizontal") %>
+      <%= label_tag(:horizontal, "Horizontal") %> <br>
+      <%= radio_button_tag(:orientation, "vertical") %>
+      <%= label_tag(:vertical, "Vertical") %><br>
+      <br>
+
+      <h3>Starting coordinate</h3>
+      <div class="coordinate_box">
+        <%= text_field :starting_coordinate, class: "pasta" %>
+      </div>
+      <br>
+      <%= hidden_field_tag :player_id, session[:user_id] %>
+      <!-- <#%= hidden_field_tag :starting_coordinate, something %> -->
+    <%= submit_tag %>
+  <%end%>
+  </div>
 </div>
 
 
 
-<div class="check">
-<%= button_to 'Check', check_game_path(game), :method => :get, remote: true %>
-</div>
