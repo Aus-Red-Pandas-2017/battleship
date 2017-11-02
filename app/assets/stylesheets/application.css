@@ -8,6 +8,19 @@ div {
   text-align: center;
 }
 
+.player_ships {
+  background-color: black;
+
+}
+
+.set_ship_form {
+  /*border: 1px solid red;*/
+  float: right;
+  display: inline-block;
+  margin-right: 50%;
+
+}
+
 .clicked {
   border: black dotted;
 }

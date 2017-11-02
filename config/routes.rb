@@ -3,14 +3,14 @@ Rails.application.routes.draw do
   get 'home/index'
   resources :sessions
   resources :players
-  resources :games do
+  resources :games, except: [:new] do
     member do
       get 'check'
       patch 'pass'
+      post 'ships'
     end
   end
 
-  get 'games/:id/ships', to: 'games#ships'
 
   get "logout", to: 'sessions#destroy',  as: :logout_my_shit
 

@@ -29,7 +29,8 @@ $(document).ready(function(){
       $(this).css("background-color", "green");
       $(this).addClass("clicked");
       var clicked_coordinate = ($(this).data("coordinate"));
-      $(".coordinate_box").append(clicked_coordinate);
+      console.log($(this).data("id"));
+      $(".coordinate_box .pasta").val(clicked_coordinate);
   });
 
  $("form #ships").click(function(){
