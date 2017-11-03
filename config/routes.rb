@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
   get 'home/index'
-  resources :sessions
+  resources :sessions, only: [:new, :create, :destroy]
   resources :players
   resources :games, except: [:new] do
     member do
+      get 'join'
       get 'check'
       patch 'pass'
       post 'ships'
@@ -12,11 +13,7 @@ Rails.application.routes.draw do
   end
 
 
-  get "logout", to: 'sessions#destroy',  as: :logout_my_shit
-
-  get "login",to: 'sessions#new'
-
-  post "login", to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
 
   root to: "games#index"
 

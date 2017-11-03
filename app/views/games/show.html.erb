@@ -1,4 +1,18 @@
 
+
+<% if game.player1_id && game.player2_id %>
+<h1> Game show page </h1>
+You are ID(<%= session[:user_id]%>)
+<br>  
+Player1 is <%=game.player1.username%> (ID: <%= game.player1_id %>)
+<br>
+Player2 is <%=game.player2.username%> (ID: <%= game.player2_id %>)
+<br>
+It is <%= game.active_player.username %>'s (ID:<%= game.active_player.id%>) turn.
+<!-- <#%= render "player_details", locals: {game: @game} %> -->
+<% end %>
+
+
 <div class="poll_buttons">
   <div class="pass">
   <%= button_to 'Pass', pass_game_path(game), :method => :patch %>

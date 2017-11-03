@@ -7,5 +7,10 @@ class Game < ApplicationRecord
   belongs_to :winner, class_name: "Player", foreign_key: "winner_id", optional: true
    belongs_to :active_player, class_name: "Player", foreign_key: "turn_id", optional: true
 
+ def find_coordinates(params)
+  # Game.find(params[:id]).game_ships.find(session[:user_id]).game_ship_coordinates
+
+ end
+
 
 end
