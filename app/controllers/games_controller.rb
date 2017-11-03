@@ -1,6 +1,14 @@
 class GamesController < ApplicationController
 
   def index
+    @games = Game.all
+  end
+
+  def join
+    @game = Game.find(params[:id])
+    @game.player2_id = session[:user_id]
+    @game.save
+    redirect_to @game
   end
 
   def show
@@ -8,12 +16,11 @@ class GamesController < ApplicationController
     render locals: {game: game}
   end
 
-  def new
 
-  end
-
-  def create
-  end
+ def create
+  @game = Game.create
+  redirect_to @game
+ end
 
 
  # Game.find(params[:id]).game_ships.find(session[:user_id]).game_ship_coordinates
@@ -21,7 +28,6 @@ class GamesController < ApplicationController
   def ships
   end
 
-  end
 
   def edit
     game = Game.find(params[:id])
@@ -61,6 +67,8 @@ class GamesController < ApplicationController
     @game.save
     redirect_to @game
   end
-
-
 end
+
+
+
+
