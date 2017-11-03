@@ -13,7 +13,7 @@
     <th>J</th>
   </tr>
 
-    <%player_ships = @total_coords%>
+    <%player_ships = @opponent_ships%>
   <tr>
     <td>1</td>
     <% Coordinate.all[0..9].each do |coordinate| %>
@@ -29,7 +29,7 @@
     <td>2</td>
     <% Coordinate.all[10..19].each do |coordinate| %>
     <% if player_ships.include?(coordinate)%>
-        <td class="player_ships" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%>
+        <td class="players_ship" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%>
       <%else%>
         <td class="coord" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%></td>
         <%end%>
@@ -40,7 +40,7 @@
     <td>3</td>
     <% Coordinate.all[20..29].each do |coordinate| %>
       <% if player_ships.include?(coordinate)%>
-        <td class="player_ships" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%>
+        <td class="players_ship" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%>
       <%else%>
         <td class="coord" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%></td>
         <%end%>
@@ -51,7 +51,7 @@
     <td>4</td>
     <% Coordinate.all[30..39].each do |coordinate| %>
       <% if player_ships.include?(coordinate)%>
-        <td class="player_ships" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%>
+        <td class="players_ship" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%>
       <%else%>
         <td class="coord" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%></td>
         <%end%>
@@ -62,7 +62,7 @@
     <td>5</td>
     <% Coordinate.all[40..49].each do |coordinate| %>
        <% if player_ships.include?(coordinate)%>
-        <td class="player_ships" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%>
+        <td class="players_ship" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%>
       <%else%>
         <td class="coord" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%></td>
         <%end%>
@@ -73,7 +73,7 @@
     <td>6</td>
     <% Coordinate.all[50..59].each do |coordinate| %>
         <% if player_ships.include?(coordinate)%>
-        <td class="player_ships" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%>
+        <td class="players_ship" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%>
       <%else%>
         <td class="coord" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%></td>
         <%end%>
@@ -84,7 +84,7 @@
     <td>7</td>
     <% Coordinate.all[60..69].each do |coordinate| %>
         <% if player_ships.include?(coordinate)%>
-        <td class="player_ships" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%>
+        <td class="players_ship" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%>
       <%else%>
         <td class="coord" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%></td>
         <%end%>
@@ -95,7 +95,7 @@
     <td>8</td>
     <% Coordinate.all[70..79].each do |coordinate| %>
        <% if player_ships.include?(coordinate)%>
-        <td class="player_ships" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%>
+        <td class="players_ship" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%>
       <%else%>
         <td class="coord" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%></td>
         <%end%>
@@ -106,7 +106,7 @@
     <td>9</td>
     <% Coordinate.all[80..89].each do |coordinate| %>
         <% if player_ships.include?(coordinate)%>
-        <td class="player_ships" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%>
+        <td class="players_ship" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%>
       <%else%>
         <td class="coord" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%></td>
         <%end%>
@@ -117,7 +117,7 @@
     <td>10</td>
     <% Coordinate.all[90..100].each do |coordinate| %>
         <% if player_ships.include?(coordinate)%>
-        <td class="player_ships" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%>
+        <td class="players_ship" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%>
       <%else%>
         <td class="coord" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%></td>
         <%end%>

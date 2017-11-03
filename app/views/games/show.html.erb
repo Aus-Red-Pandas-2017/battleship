@@ -3,7 +3,7 @@
 <% if game.player1_id && game.player2_id %>
 <h1> Game show page </h1>
 You are ID(<%= session[:user_id]%>)
-<br>  
+<br>
 Player1 is <%=game.player1.username%> (ID: <%= game.player1_id %>)
 <br>
 Player2 is <%=game.player2.username%> (ID: <%= game.player2_id %>)
@@ -22,28 +22,41 @@ It is <%= game.active_player.username %>'s (ID:<%= game.active_player.id%>) turn
   <%= button_to 'Check', check_game_path(game), :method => :get, remote: true %>
   </div>
 </div>
+<% @opponent_ships = [] %>
 
-  <div class="create_board">
+<%= render "shared/attack_board" %>
 
-    <div class="set_board">
-      <h1>Set Your Board</h1>
-      <%= render "shared/new_board" %>
-    </div>
+<div class="attack_box">
+<h3>Enter Attack Coordinate</h3>
+<%=  form_tag(controller: "games", action: "attack", method: "post") do %>
+<%= text_field :attack, :pasta %>
+<%= submit_tag %>
+<%end%>
+</div>
 
+
+
+
+<div class="create_board">
+  <div class="set_board">
+    <h1>Set Your Board</h1>
+    <%= render "shared/new_board"%>
+  </div>
 
   <div class="set_ship_form">
     <%=  form_tag(controller: "games", action: "ships", method: "post") do %>
 
+
       <h3>Pick Your Ship</h3>
-      <%= radio_button_tag(:ship, "carrier") %>
+      <%= radio_button_tag(:ship, 1) %>
       <%= label_tag(:carrier, "Carrier") %><br>
-      <%= radio_button_tag(:ship, "battleship") %>
-      <%= label_tag(:battleship, "Battleship") %><br>
-      <%= radio_button_tag(:ship, "submarine") %>
+      <%= radio_button_tag(:ship, 2) %>
+      <%= label_tag(:battleship, "Battlehip") %><br>
+      <%= radio_button_tag(:ship, 3) %>
       <%= label_tag(:submarine, "Submarine") %><br>
-      <%= radio_button_tag(:ship, "cruiser") %>
+      <%= radio_button_tag(:ship, 4) %>
       <%= label_tag(:cruiser, "Cruiser") %><br>
-      <%= radio_button_tag(:ship, "destroyer") %>
+      <%= radio_button_tag(:ship, 5) %>
       <%= label_tag(:destroyer, "Destroyer") %><br>
       <br>
 
@@ -56,11 +69,14 @@ It is <%= game.active_player.username %>'s (ID:<%= game.active_player.id%>) turn
 
       <h3>Starting Coordinate</h3>
       <div class="coordinate_box">
-          <%= text_field :starting_coordinate, class: "pasta" %>
+
+        <%= text_field :starting_coordinate, :pasta %>
+
         <br>
         <%= hidden_field_tag :player_id, session[:user_id] %>
         <!-- <#%= hidden_field_tag :starting_coordinate, something %> -->
       <%= submit_tag %>
+
       </div>
   <%end%>
   </div>

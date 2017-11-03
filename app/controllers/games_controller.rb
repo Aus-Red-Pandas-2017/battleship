@@ -2,6 +2,9 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.all
+    @player_ships = []
+    @total_coords = []
+    render locals: {player_ships: @player_ships}
   end
 
   def join
@@ -12,11 +15,67 @@ class GamesController < ApplicationController
   end
 
   def show
+    @player_ships = []
     game = Game.find(params[:id])
-    render locals: {game: game}
-    #@game
+    @total_coords = []
+    if Game.find(params[:id]).game_ships.find_by(player_id: session[:user_id])
+    @bunch_o_ships = Game.find(params[:id]).game_ships.where(player_id: session[:user_id])
+
+
+    @bunch_o_ships.each do |ship|
+      ship.coordinates.each do |coordinate|
+        @total_coords.push(Coordinate.find(coordinate.id))
+      end
+    end
+  end
+  player_ships = @total_coords
+  opponent_ships = []
+
+    # players_coords = game.game_ships.find_by(player_id: session[:user_id]).coordinates
+    # players_coords.each do |coordinate|
+    #    @player_ships.push(coordinate)
+    # end
+
+    render locals: {game: game, player_ships: player_ships, opponent_ships: opponent_ships}
   end
 
+  def attack
+    attack = params[:attack][:pasta]
+    attack_coordinate = Coordinate.find_by( x_position: params[:attack][:pasta][0], y_position: params[:attack][:pasta][-1])
+    current_player1_id = Game.find(params[:id]).player1_id
+    current_player2_id = Game.find(params[:id]).player2_id
+    game = Game.find(params[:id])
+
+    if current_player1_id == session[:user_id]
+      @all_player2_ship_coords = []
+       @player2_ships = Game.find(params[:id]).game_ships.where(player_id: current_player2_id)
+
+
+      targets = []
+       @player2_ships.each do |ship|
+        targets.push(ship.game_ship_coordinates)
+        targets[0].each do |target|
+           if target.coordinate_id == attack_coordinate.id
+            target.is_hit = true
+            end
+          end
+
+        end
+
+
+       @player2_ships.each do |ship|
+        ship.coordinates.each do |coordinate|
+          @all_player2_ship_coords.push(Coordinate.find(coordinate.id))
+        end
+      end
+
+
+      @all_player2_ship_coords.include?(attack_coordinate)
+
+    else
+
+    end
+  end
 
  def create
   @game = Game.create(player1_id: session[:user_id], turn_id: session[:user_id])
@@ -24,9 +83,45 @@ class GamesController < ApplicationController
  end
 
 
- # Game.find(params[:id]).game_ships.find(session[:user_id]).game_ship_coordinates
-
   def ships
+    #create ship
+    ship = GameShip.create({game_id: params[:id], player_id: params[:player_id], ship_id: params[:ship]})
+
+    #create ship's first coord
+    starting_coordinate = Coordinate.find_by( x_position: params[:starting_coordinate][:pasta][0], y_position: params[:starting_coordinate][:pasta][-1])
+    GameShipCoordinate.create({coordinate_id: starting_coordinate.id, game_ship: ship})
+
+    #create remaining coords for ship
+    i=0
+    continue_coord = starting_coordinate
+    while i < Ship.find(ship.ship_id).length-1
+      if params[:orientation] == "horizontal"
+        coord = Coordinate.find_by(x_position: continue_coord.x_position.next, y_position: continue_coord.y_position)
+        new_coord = GameShipCoordinate.create({coordinate_id: coord.id, game_ship: ship})
+      else
+        coord = Coordinate.find_by(x_position: continue_coord.x_position, y_position: continue_coord.y_position.next)
+        new_coord = GameShipCoordinate.create({coordinate_id: coord.id, game_ship: ship})
+      end
+      continue_coord = Coordinate.find(new_coord.coordinate_id)
+      i+=1
+    end
+
+    #add ships's coordinates to array of all player's ships' coords
+    # @new_ship = []
+    # ship.game_ship_coordinates.each do |coordinate|
+    #   @new_ship.push(Coordinate.find(coordinate.coordinate_id))
+    # end
+
+    # @total_coords = []
+    # @player_coords = Game.find(params[:id]).game_ships.find_by(player_id: session[:user_id]).game_ship_coordinates
+
+    # @player_coords.each do |coordinate|
+    #   @total_coords.push(Coordinate.find(coordinate.coordinate_id))
+    # end
+
+    # @total_coords = @total_coords.push(@new_ship)
+    @game = Game.find(params[:id])
+    redirect_to @game
   end
 
 
