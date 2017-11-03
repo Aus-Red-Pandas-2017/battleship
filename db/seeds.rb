@@ -3,11 +3,11 @@ todd = Player.create({username: "Todd", password_hash: "password"})
 
 gamely = Game.create({winner: steve, player1: steve, player2: todd, turn_id: steve.id})
 
-carrier = Ship.create({length: 5})
-battleship = Ship.create({length: 4})
-submarine = Ship.create({length: 3})
-cruiser = Ship.create({length: 3})
-destroyer = Ship.create({length: 2})
+carrier = Ship.create({name: "Carrier", length: 5})
+battleship = Ship.create({name: "Battleship", length: 4})
+submarine = Ship.create({name: "Submarine", length: 3})
+cruiser = Ship.create({name: "Cruiser", length: 3})
+destroyer = Ship.create({name: "Destroyer", length: 2})
 
 steve1destroyer = GameShip.create({game: gamely, player: steve, ship_id: 5})
 todd2battleship = GameShip.create({game: gamely, player: todd, ship_id: 2})

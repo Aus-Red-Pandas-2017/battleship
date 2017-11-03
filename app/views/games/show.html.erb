@@ -21,15 +21,15 @@
     <%=  form_tag(controller: "games", action: "ships", method: "post") do %>
 
       <h3>Pick your ship</h3>
-      <%= radio_button_tag(:ship, "carrier") %>
+      <%= radio_button_tag(:ship, 1) %>
       <%= label_tag(:carrier, "Carrier") %><br>
-      <%= radio_button_tag(:ship, "battleship") %>
-      <%= label_tag(:battleship, "Battleship") %><br>
-      <%= radio_button_tag(:ship, "submarine") %>
+      <%= radio_button_tag(:ship, 2) %>
+      <%= label_tag(:battleship, "Battlehip") %><br>
+      <%= radio_button_tag(:ship, 3) %>
       <%= label_tag(:submarine, "Submarine") %><br>
-      <%= radio_button_tag(:ship, "cruiser") %>
+      <%= radio_button_tag(:ship, 4) %>
       <%= label_tag(:cruiser, "Cruiser") %><br>
-      <%= radio_button_tag(:ship, "destroyer") %>
+      <%= radio_button_tag(:ship, 5) %>
       <%= label_tag(:destroyer, "Destroyer") %><br>
       <br>
 
@@ -42,7 +42,7 @@
 
       <h3>Starting coordinate</h3>
       <div class="coordinate_box">
-        <%= text_field :starting_coordinate, class: "pasta" %>
+        <%= text_field :starting_coordinate, :pasta %>
       </div>
       <br>
       <%= hidden_field_tag :player_id, session[:user_id] %>

@@ -1,4 +1,4 @@
 class Ship < ApplicationRecord
-  belongs_to :game_ship
+  has_many :game_ship
 
 end
