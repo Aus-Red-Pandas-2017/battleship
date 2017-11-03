@@ -9,27 +9,17 @@ class GamesController < ApplicationController
   end
 
   def new
-    active_player_ships = Game.find(params[:id]).game_ships.find(session[:user_id]).game_ship_coordinates
-    active_player_coords = []
-    active_player_ships.each do |coord|
-      active_player_coords << coord.coordinate_id
+
   end
-   player_ships = active_player_coords
- end
+
+  def create
+  end
 
 
  # Game.find(params[:id]).game_ships.find(session[:user_id]).game_ship_coordinates
 
   def ships
-    b
-    active_player_ships = Game.find(params[:id]).game_ships.find(session[:user_id]).game_ship_coordinates
-    active_player_coords = []
-    active_player_ships.each do |coord|
-      active_player_coords << coord.coordinate_id
-    end
-
-
-    @game = Game.find(params[:id])
+  end
 
   end
 
@@ -69,7 +59,7 @@ class GamesController < ApplicationController
       puts "It's not your turn"
     end
     @game.save
-    redirect_to@game
+    redirect_to @game
   end
 
 
