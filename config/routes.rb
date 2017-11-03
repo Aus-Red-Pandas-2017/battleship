@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get 'check'
       patch 'pass'
       post 'ships'
+      post 'attack'
     end
   end
 

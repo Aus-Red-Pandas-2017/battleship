@@ -22,12 +22,25 @@ It is <%= game.active_player.username %>'s (ID:<%= game.active_player.id%>) turn
   <%= button_to 'Check', check_game_path(game), :method => :get, remote: true %>
   </div>
 </div>
+<% @opponent_ships = [] %>
+
+<%= render "shared/attack_board" %>
+
+<div class="attack_box">
+<h3>Enter Attack Coordinate</h3>
+<%=  form_tag(controller: "games", action: "attack", method: "post") do %>
+<%= text_field :attack, :pasta %>
+<%= submit_tag %>
+<%end%>
+</div>
+
+
 
 
 <div class="create_board">
   <div class="set_board">
     <h1>Set Your Board</h1>
-    <%= render "shared/new_board", {player_ships: @player_ships} %>
+    <%= render "shared/new_board"%>
   </div>
 
   <div class="set_ship_form">

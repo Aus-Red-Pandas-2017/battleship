@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 20171101192954) do
   create_table "coordinates", force: :cascade do |t|
     t.string "x_position"
     t.integer "y_position"
-    t.boolean "is_hit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -26,6 +25,7 @@ ActiveRecord::Schema.define(version: 20171101192954) do
   create_table "game_ship_coordinates", force: :cascade do |t|
     t.integer "game_ship_id"
     t.integer "coordinate_id"
+    t.boolean "is_hit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -29,15 +29,53 @@ class GamesController < ApplicationController
     end
   end
   player_ships = @total_coords
+  opponent_ships = []
 
     # players_coords = game.game_ships.find_by(player_id: session[:user_id]).coordinates
     # players_coords.each do |coordinate|
     #    @player_ships.push(coordinate)
     # end
 
-    render locals: {game: game, player_ships: player_ships}
+    render locals: {game: game, player_ships: player_ships, opponent_ships: opponent_ships}
   end
 
+  def attack
+    attack = params[:attack][:pasta]
+    attack_coordinate = Coordinate.find_by( x_position: params[:attack][:pasta][0], y_position: params[:attack][:pasta][-1])
+    current_player1_id = Game.find(params[:id]).player1_id
+    current_player2_id = Game.find(params[:id]).player2_id
+    game = Game.find(params[:id])
+
+    if current_player1_id == session[:user_id]
+      @all_player2_ship_coords = []
+       @player2_ships = Game.find(params[:id]).game_ships.where(player_id: current_player2_id)
+
+
+      targets = []
+       @player2_ships.each do |ship|
+        targets.push(ship.game_ship_coordinates)
+        targets[0].each do |target|
+           if target.coordinate_id == attack_coordinate.id
+            target.is_hit = true
+            end
+          end
+
+        end
+
+
+       @player2_ships.each do |ship|
+        ship.coordinates.each do |coordinate|
+          @all_player2_ship_coords.push(Coordinate.find(coordinate.id))
+        end
+      end
+
+
+      @all_player2_ship_coords.include?(attack_coordinate)
+
+    else
+
+    end
+  end
 
  def create
   @game = Game.create(player1_id: session[:user_id], turn_id: session[:user_id])
