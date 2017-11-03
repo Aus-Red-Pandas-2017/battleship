@@ -14,11 +14,12 @@ class GamesController < ApplicationController
   def show
     game = Game.find(params[:id])
     render locals: {game: game}
+    #@game
   end
 
 
  def create
-  @game = Game.create
+  @game = Game.create(player1_id: session[:user_id], turn_id: session[:user_id])
   redirect_to @game
  end
 
