@@ -14,10 +14,11 @@
   </tr>
 
     <%player_ships = @total_coords%>
+
   <tr>
     <td>1</td>
     <% Coordinate.all[0..9].each do |coordinate| %>
-      <% if player_ships.include?(coordinate)%>
+      <% if player_ships.include?(coordinate) %>
         <td class="player_ships" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%>
       <%else%>
         <td class="coord" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%></td>

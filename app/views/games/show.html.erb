@@ -3,7 +3,7 @@
 
   <% if game.player1_id && game.player2_id %>
   You are ID(<%= session[:user_id]%>)
-  <br>  
+  <br>
   Player1 is <%=game.player1.username%> (ID: <%= game.player1_id %>)
   <br>
   Player2 is <%=game.player2.username%> (ID: <%= game.player2_id %>)
@@ -22,18 +22,23 @@
   <div class="check">
   <%= button_to 'Check', check_game_path(game), :method => :get, remote: true %>
   </div>
-
-
-    <div class="attack_box">
-    <h3>Enter Attack Coordinate</h3>
-    <%=  form_tag(controller: "games", action: "attack", method: "post") do %>
-    <%= text_field :attack, :pasta %>
-    <%= submit_tag %>
-    <%end%>
-  </div>
-
 </div>
+
 <% @opponent_ships = [] %>
+
+<%= render partial: "shared/attack_board", locals: {opponent_ships: opponent_ships} %>
+
+
+<% if game.turn_id == session[:user_id]%>
+<div class="attack_box">
+<h3>Enter Attack Coordinate</h3>
+<%=  form_tag(controller: "games", action: "attack", method: "post") do %>
+<%= text_field :attack, :pasta %>
+<%= submit_tag %>
+<%end%>
+</div>
+<%end %>
+
 
 
 
@@ -84,15 +89,6 @@
 
 
   </div>
-
-
-<div class=attack_board>
-   <h1>Attack Your Opponent</h1>
-    <%= render "shared/attack_board" %>
-</div>
-
-
-
 
 </div>
 
