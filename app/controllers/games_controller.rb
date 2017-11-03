@@ -15,6 +15,7 @@ class GamesController < ApplicationController
   end
 
   def show
+    opponent_ships = []
     @player_ships = []
     game = Game.find(params[:id])
     @total_coords = []
@@ -28,8 +29,48 @@ class GamesController < ApplicationController
       end
     end
   end
+
+  current_player1_id = Game.find(params[:id]).player1_id
+  current_player2_id = Game.find(params[:id]).player2_id
+  game = Game.find(params[:id])
+
+  if current_player1_id == session[:user_id]
+    @player2_ships = Game.find(params[:id]).game_ships.where(player_id: current_player2_id)
+      hits = []
+
+     @player2_ships.each do |ship|
+      hits.push(ship.game_ship_coordinates)
+     end
+
+      hits = hits.flatten
+      hits.each do |x|
+        if x.is_hit
+          x = x.coordinate
+          opponent_ships.push(x)
+        end
+      end
+
+  else
+      @player1_ships = Game.find(params[:id]).game_ships.where(player_id: current_player1_id)
+      hits = []
+
+     @player1_ships.each do |ship|
+      hits.push(ship.game_ship_coordinates)
+     end
+
+      hits = hits.flatten
+      hits.each do |x|
+        if x.is_hit
+          x = x.coordinate
+          opponent_ships.push(x)
+        end
+      end
+
+  end
+    #get player1s game_ship_coordinates
+
   player_ships = @total_coords
-  opponent_ships = []
+
 
     # players_coords = game.game_ships.find_by(player_id: session[:user_id]).coordinates
     # players_coords.each do |coordinate|
@@ -57,24 +98,41 @@ class GamesController < ApplicationController
         targets[0].each do |target|
            if target.coordinate_id == attack_coordinate.id
             target.is_hit = true
+            target.save
             end
           end
 
         end
 
-
-       @player2_ships.each do |ship|
-        ship.coordinates.each do |coordinate|
-          @all_player2_ship_coords.push(Coordinate.find(coordinate.id))
-        end
-      end
-
-
-      @all_player2_ship_coords.include?(attack_coordinate)
+      #  @player2_ships.each do |ship|
+      #   ship.coordinates.each do |coordinate|
+      #     @all_player2_ship_coords.push(Coordinate.find(coordinate.id))
+      #   end
+      # end
+      # @all_player2_ship_coords.include?(attack_coordinate)
 
     else
 
-    end
+      @all_player1_ship_coords = []
+      @player1_ships = Game.find(params[:id]).game_ships.where(player_id: current_player1_id)
+
+      targets = []
+      @player1_ships.each do |ship|
+        targets.push(ship.game_ship_coordinates)
+          targets[0].each do |target|
+              if target.coordinate_id == attack_coordinate.id
+              target.is_hit = true
+              target.save
+              end
+          end
+      end
+
+       # @player1_ships.each do |ship|
+       #  ship.coordinates.each do |coordinate|
+       #    @all_player1_ship_coords.push(Coordinate.find(coordinate.id))
+       #  end
+       # end
+     end
   end
 
  def create
