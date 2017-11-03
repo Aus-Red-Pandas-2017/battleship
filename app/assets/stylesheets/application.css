@@ -1,13 +1,16 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
 
 
-div {
+/*div {
   border: 1px solid red;
-}
+}*/
+
 
 h1 {
    font-family: 'Oswald'; 
    font-size: 75px;
+   color: #2C3256; 
+   /*color: navy;*/
 }
 
 p {
@@ -15,14 +18,111 @@ p {
 }
 
 * {
- font-family: 'Exo', sans-serif; 
+ font-family: 'Exo', sans-serif;
+ color: #2C3256; 
 }
+
+
+.new_user_form {
+  padding: 30px;
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  z-index: 15;
+  top: 25%;
+  left: 50%;
+  margin: -100px 0 0 -150px;
+}
+
+
+.new_user_form label {
+  font-size: 50px;
+}
+
+
+.new_user_form input[type="submit"] {
+  width: 120px; 
+  height: 40px; 
+  font-size: 22px;
+  border-radius: 10px;
+  margin-left: 3%;
+  margin-top: 3%;
+  color: #2C3256;
+}
+
+
+.new_user_form input[type="text"] {
+  width: 215px; 
+  height: 30px; 
+  font-size: 22px;
+  /*border-radius: 3px;*/
+}
+
+
+
+
+
+.poll_buttons {
+    position: absolute;
+    right: 20px;
+    width: 200px;
+    height: 120px;
+}
+
+
+.pass input[type="submit"] {
+  width: 130px; 
+  height: 40px; 
+  font-size: 25px;
+  border-radius: 10px;
+  margin-left: 3%;
+  margin-top: 3%;
+  color: #2C3256;
+}
+
+
+
+.check input[type="submit"] {
+  width: 130px; 
+  height: 40px; 
+  font-size: 25px;
+  border-radius: 10px;
+  margin-left: 3%;
+  margin-top: 3%;
+  color: #2C3256;
+}
+
+
+.new_game input[type="submit"] {
+  width: 175px; 
+  height: 50px; 
+  font-size: 25px;
+  border-radius: 10px;
+  margin-left: 3%;
+  margin-top: 5%;
+  color: #2C3256;
+  position: absolute;
+}
+
+.coordinate_box input[type="submit"] {
+  width: 150px; 
+  height: 30px; 
+  font-size: 20px;
+  border-radius: 10px;
+  margin-left: 18%;
+  margin-top: 5%;
+  margin-bottom: 2%;
+  color: #2C3256;
+}
+
 
 
 /*DIV STYLINGS*/
 .headings {
   display: inline-block;
-  float: right;
+  margin-top: 2%;
+  margin-left: 5%;
+  /*float: right;*/
 }
 
 
@@ -36,21 +136,25 @@ p {
 
 }
 
+
+
 .set_ship_form {
-  /*border: 1px solid red;*/
   float: right;
   display: inline-block;
   margin-right: 30%;
-  margin-top: 9%;
+  margin-top: 10%;
   font-size: 23px;
 
 }
 
 
 
+
+
 .set_board {
   display: inline-block;
   text-align: center;
+  margin-left: 5%;
 }
 
 .coord {
@@ -60,18 +164,31 @@ p {
   width: 50px;
 }
 
+
+.both_boards {
+  text-align: center;
+  float: right;
+  margin-right: 12%;
+  margin-left: 12%;
+  padding: 5px;
+}
+
+
+
 .my_board{
   display: inline-block;
   text-align: center;
-  float: right;
-  margin-right: 10%;
+  padding: 8px;
+/*  float: right;
+  margin-right: 10%;*/
 }
 
 .opponent_board{
   display: inline-block;
   text-align: center;
-  float: left;
-  margin-left: 10%;
+  padding: 8px;
+/*  float: left;
+  margin-left: 10%;*/
 }
 
 
@@ -89,6 +206,23 @@ p {
   width: 50px;
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*came with*/
 
 * {
   margin: 0;

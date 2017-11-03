@@ -15,8 +15,9 @@
 	</div>
 </div>
 
-<%= button_to "Create Game", action: "create" %>
-
+<div class="new_game">
+	<%= button_to "Create Game", action: "create" %>
+</div>
 
 <%if session[:user_id]%>
 	<% @games.each do |game| %>

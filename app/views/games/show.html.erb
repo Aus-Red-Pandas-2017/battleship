@@ -23,17 +23,18 @@ It is <%= game.active_player.username %>'s (ID:<%= game.active_player.id%>) turn
   </div>
 </div>
 
+
 <div class="create_board">
   <div class="set_board">
-    <h1>Set your board</h1>
+    <h1>Set Your Board</h1>
     <%= render "shared/new_board", {player_ships: @player_ships} %>
   </div>
-
 
   <div class="set_ship_form">
     <%=  form_tag(controller: "games", action: "ships", method: "post") do %>
 
-      <h3>Pick your ship</h3>
+
+      <h3>Pick Your Ship</h3>
       <%= radio_button_tag(:ship, 1) %>
       <%= label_tag(:carrier, "Carrier") %><br>
       <%= radio_button_tag(:ship, 2) %>
@@ -46,21 +47,24 @@ It is <%= game.active_player.username %>'s (ID:<%= game.active_player.id%>) turn
       <%= label_tag(:destroyer, "Destroyer") %><br>
       <br>
 
-      <h3>Select orientation</h3>
+      <h3>Select Orientation</h3>
       <%= radio_button_tag(:orientation, "horizontal") %>
       <%= label_tag(:horizontal, "Horizontal") %> <br>
       <%= radio_button_tag(:orientation, "vertical") %>
       <%= label_tag(:vertical, "Vertical") %><br>
       <br>
 
-      <h3>Starting coordinate</h3>
+      <h3>Starting Coordinate</h3>
       <div class="coordinate_box">
+
         <%= text_field :starting_coordinate, :pasta %>
+
+        <br>
+        <%= hidden_field_tag :player_id, session[:user_id] %>
+        <!-- <#%= hidden_field_tag :starting_coordinate, something %> -->
+      <%= submit_tag %>
+
       </div>
-      <br>
-      <%= hidden_field_tag :player_id, session[:user_id] %>
-      <!-- <#%= hidden_field_tag :starting_coordinate, something %> -->
-    <%= submit_tag %>
   <%end%>
   </div>
 </div>
