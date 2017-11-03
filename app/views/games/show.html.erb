@@ -25,7 +25,7 @@
 </div>
 <% @opponent_ships = [] %>
 
-<%= render "shared/attack_board" %>
+<%= render partial: "shared/attack_board", locals: {opponent_ships: opponent_ships} %>
 
 
 <% if game.turn_id == session[:user_id]%>

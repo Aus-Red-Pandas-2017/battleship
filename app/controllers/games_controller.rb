@@ -36,24 +36,38 @@ class GamesController < ApplicationController
 
   if current_player1_id == session[:user_id]
     @player2_ships = Game.find(params[:id]).game_ships.where(player_id: current_player2_id)
-      game_ship_coordinates = []
+      hits = []
 
-       @player2_ships.each do |ship|
-        game_ship_coordinates.push(ship.game_ship_coordinates)
-       end
+     @player2_ships.each do |ship|
+      hits.push(ship.game_ship_coordinates)
+     end
 
-      game_ship_coordinates = game_ship_coordinates.flatten
-      game_ship_coordinates.each do |x|
+      hits = hits.flatten
+      hits.each do |x|
         if x.is_hit
+          x = x.coordinate
           opponent_ships.push(x)
         end
       end
 
   else
+      @player1_ships = Game.find(params[:id]).game_ships.where(player_id: current_player1_id)
+      hits = []
+
+     @player1_ships.each do |ship|
+      hits.push(ship.game_ship_coordinates)
+     end
+
+      hits = hits.flatten
+      hits.each do |x|
+        if x.is_hit
+          x = x.coordinate
+          opponent_ships.push(x)
+        end
+      end
 
   end
     #get player1s game_ship_coordinates
-
 
   player_ships = @total_coords
 
@@ -84,6 +98,7 @@ class GamesController < ApplicationController
         targets[0].each do |target|
            if target.coordinate_id == attack_coordinate.id
             target.is_hit = true
+            target.save
             end
           end
 
@@ -107,6 +122,7 @@ class GamesController < ApplicationController
           targets[0].each do |target|
               if target.coordinate_id == attack_coordinate.id
               target.is_hit = true
+              target.save
               end
           end
       end
