@@ -4,14 +4,16 @@
 <div class="both_boards">
 	<div class="my_board">
 	  <h2>Attack Map</h2>
-	  <%= render "shared/new_board" %>
+    <%player_ships = []%>
+	  <%= render "shared/new_board", {player_ships: player_ships}%>
 	</div>
 
 	<div class="opponent_board">
 	  <h2>Your Ships</h2>
-	  <%= render "shared/new_board" %>
+    <%player_ships = []%>
+	  <%= render "shared/new_board", {player_ships: player_ships}%>
 	</div>
-</div>	
+</div>
 
 <div class="new_game">
 	<%= button_to "Create Game", action: "create" %>
