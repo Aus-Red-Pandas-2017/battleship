@@ -2,6 +2,9 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.all
+    @player_ships = []
+    @total_coords = []
+    render locals: {player_ships: @player_ships}
   end
 
   def join
@@ -14,13 +17,25 @@ class GamesController < ApplicationController
   def show
     @player_ships = []
     game = Game.find(params[:id])
+    @total_coords = []
+    if Game.find(params[:id]).game_ships.find_by(player_id: session[:user_id])
+    @bunch_o_ships = Game.find(params[:id]).game_ships.where(player_id: session[:user_id])
 
-    players_coords = game.game_ships.find_by(player_id: session[:user_id]).coordinates
-    players_coords.each do |coordinate|
-       @player_ships.push(coordinate)
+
+    @bunch_o_ships.each do |ship|
+      ship.coordinates.each do |coordinate|
+        @total_coords.push(Coordinate.find(coordinate.id))
+      end
     end
+  end
+  player_ships = @total_coords
 
-    render locals: {game: game, player_ships: @player_ships}
+    # players_coords = game.game_ships.find_by(player_id: session[:user_id]).coordinates
+    # players_coords.each do |coordinate|
+    #    @player_ships.push(coordinate)
+    # end
+
+    render locals: {game: game, player_ships: player_ships}
   end
 
 
@@ -54,13 +69,21 @@ class GamesController < ApplicationController
     end
 
     #add ships's coordinates to array of all player's ships' coords
+    # @new_ship = []
     # ship.game_ship_coordinates.each do |coordinate|
-    #   @player_ships.push(Coordinate.find(coordinate.coordinate_id))
+    #   @new_ship.push(Coordinate.find(coordinate.coordinate_id))
     # end
 
-    # Game.find(params[:id]).game_ships.find(session[:user_id]).game_ship_coordinates
-    binding.pry
+    # @total_coords = []
+    # @player_coords = Game.find(params[:id]).game_ships.find_by(player_id: session[:user_id]).game_ship_coordinates
 
+    # @player_coords.each do |coordinate|
+    #   @total_coords.push(Coordinate.find(coordinate.coordinate_id))
+    # end
+
+    # @total_coords = @total_coords.push(@new_ship)
+    @game = Game.find(params[:id])
+    redirect_to @game
   end
 
 

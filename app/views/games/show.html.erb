@@ -3,7 +3,7 @@
 <% if game.player1_id && game.player2_id %>
 <h1> Game show page </h1>
 You are ID(<%= session[:user_id]%>)
-<br>  
+<br>
 Player1 is <%=game.player1.username%> (ID: <%= game.player1_id %>)
 <br>
 Player2 is <%=game.player2.username%> (ID: <%= game.player2_id %>)
@@ -26,7 +26,7 @@ It is <%= game.active_player.username %>'s (ID:<%= game.active_player.id%>) turn
 <div class="create_board">
   <div class="set_board">
     <h1>Set your board</h1>
-    <%= render "shared/new_board" %>
+    <%= render "shared/new_board", {player_ships: @player_ships} %>
   </div>
 
 
