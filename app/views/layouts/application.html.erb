@@ -8,28 +8,27 @@
 
     <%= csrf_meta_tags %>
 
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Exo|Vollkorn" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
- <header>
-  <h1>CSS Shiply</h1>
-  <p>
-
-      <% if session[:user_id] %>
-        <%= link_to 'Logout', logout_path, method: 'delete'%>
-      <% else %>
-        <%= link_to 'Register', new_player_path %>
-        <%= link_to 'Login', new_session_path %>
-     <% end %>
-     <%= link_to 'Home', root_url %>
 
 
-
-
-  </p>
-</header>
 
   <body>
+     <div class="headings">
+        <p>
+            <% if session[:user_id] %>
+              <%= link_to 'Logout', logout_path, method: 'delete'%>
+            <% else %>
+              <%= link_to 'Register', new_player_path %>
+              <%= link_to 'Login', new_session_path %>
+           <% end %>
+           <%= link_to 'Home', root_url %>
+        </p>
+      </div>
+
+
     <%= yield %>
   </body>
 </html>
