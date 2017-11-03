@@ -1,12 +1,13 @@
-<div class="title"><h1> Shiply Home Index </h1></div>
-<div class="my_board">
-  <h2>Attack Map</h2>
-  <%= render "shared/new_board" %>
-</div>
-
-<div class="opponent_board">
-  <h2>Your Ships</h2>
-  <%= render "shared/new_board" %>
-</div>
-
 <%= button_to "Create Game", action: "create" %>
+
+<%if session[:user_id]%>
+<% @games.each do |game| %>
+<%if game.player2_id == nil %>
+<div>
+  <%= game.id %>
+  <%= link_to 'Join', join_game_path(game) %>
+</div>
+
+<% end %>
+<% end %>
+<% end %>

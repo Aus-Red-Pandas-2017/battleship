@@ -8,11 +8,9 @@ class PlayersController < ApplicationController
   end
 
   def new
-
   end
 
   def create
-
     @player = Player.create({username: params[:user][:username], password: params[:user][:username]})
     session[:user_id] = @player.id
     redirect_to root_url

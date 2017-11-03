@@ -12,20 +12,20 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
  <header>
-  <h1>Shiply</h1>
+  <h1>CSS Shiply</h1>
   <p>
-    <% if session[:user_id] %>
 
-    <!-- <#%= link_to sessions_path, method: :delete do %> -->
-      Player ID: <%= session[:user_id] %>
-    <!-- <%# end %> -->
+      <% if session[:user_id] %>
+        <%= link_to 'Logout', logout_path, method: 'delete'%>
+      <% else %>
+        <%= link_to 'Register', new_player_path %>
+        <%= link_to 'Login', new_session_path %>
+     <% end %>
+     <%= link_to 'Home', root_url %>
 
 
-    <% else %>
-      <a href="/login">Login</a>
-      <a href="/users/new">Register</a>
-    <%end%>
-    <a href="/">Home</a>
+
+
   </p>
 </header>
 
