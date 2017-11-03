@@ -12,7 +12,14 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
  <header>
-  <h2>Shiply</h>
+
+</header>
+
+  <body>
+
+
+
+ <div class="headings">
   <p>
     <% if session[:user_id] %>
 
@@ -27,9 +34,9 @@
     <%end%>
     <a href="/">Home</a>
   </p>
-</header>
+  </div>
 
-  <body>
+
     <%= yield %>
   </body>
 </html>

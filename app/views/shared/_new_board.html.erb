@@ -12,7 +12,8 @@
     <th>I</th>
     <th>J</th>
   </tr>
-<%player_ships = [Coordinate.find(1)]%>
+  
+<%player_ships = []%>
   <tr>
     <td>1</td>
     <% Coordinate.all[0..9].each do |coordinate| %>
