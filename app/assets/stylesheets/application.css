@@ -12,7 +12,7 @@ h1 {
    font-family: 'Oswald'; 
    font-size: 75px;
    color: #2C3256; 
-   letter-spacing: 2px;
+   letter-spacing: 3px;
 
 }
 
@@ -27,8 +27,7 @@ p {
 }
 
 body {
-/*  background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);*/
-background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+  background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
 }
 
 
@@ -115,7 +114,8 @@ background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
 
 .poll_buttons {
     position: absolute;
-    right: 20px;
+    top: 250px;
+    right: 50px;
     width: 200px;
     height: 120px;
 }
@@ -197,6 +197,7 @@ background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
 */
 .game_players{
     position: absolute;
+ /*   display: inline-block;*/
     right: 20px;
     top: 250px;
     padding: 10px;
@@ -207,10 +208,10 @@ background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
 /*------------------------set ship form------------------*/
 
 .set_ship_form {
-  float: right;
+  float: left;
   display: inline-block;
-  margin-right: 28%;
-  margin-top: 10%;
+  margin-left: 4%;
+  margin-top: 6%;
   font-size: 23px;
   padding: 10px;
 }
@@ -227,7 +228,8 @@ background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
 .set_board {
   display: inline-block;
   text-align: center;
-  margin-left: 5%;
+  margin-left: 1%;
+  /*float: right;*/
 }
 
 .coord {
@@ -275,11 +277,75 @@ background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
  /*----------------------open games list--------------*/
 
 
-/*.game_list {
-  border: 1px solid red;
-}*/
+.game_list {
+ display: inline-block;
+ position: absolute;
+ margin-top: 9%;
+ margin-left: 3%;
+}
+
+ul {
+  list-style-type: none;
+  columns: 3;
+  -webkit-columns: 3;
+  -moz-columns: 3;
+}
 
 
+/*--------------------attack board-------------------*/
+
+.attack_board {
+  display: inline-block;
+  float: right;
+  text-align: center;
+  margin-right: 13%;
+}
+
+
+.attack_box {
+  display: inline-block;
+  float: right;
+  margin-top:  25%;
+  text-align: center;
+  font-size: 23px;
+  margin-right: 5%;
+}
+
+
+
+.attack_box input[type="submit"] {
+  width: 150px; 
+  height: 30px; 
+  font-size: 20px;
+  border-radius: 10px;
+  margin-top: 5%;
+  margin-bottom: 2%;
+  color: #2C3256;
+}
+
+
+
+.attack_box input[type="text"] {
+  width: 150px; 
+  height: 25px; 
+  font-size: 15px;
+}
+
+
+.attack_board{
+  display: inline-block;
+  text-align: center;
+  padding: 8px;
+}
+
+
+
+.attack_board .coord {
+  background-color: #A0B9BB;
+  border-radius: 8px;
+  height: 50px;
+  width: 50px;
+}
 
 
 

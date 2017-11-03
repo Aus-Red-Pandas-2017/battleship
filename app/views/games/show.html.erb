@@ -22,23 +22,24 @@
   <div class="check">
   <%= button_to 'Check', check_game_path(game), :method => :get, remote: true %>
   </div>
+
+
+    <div class="attack_box">
+    <h3>Enter Attack Coordinate</h3>
+    <%=  form_tag(controller: "games", action: "attack", method: "post") do %>
+    <%= text_field :attack, :pasta %>
+    <%= submit_tag %>
+    <%end%>
+  </div>
+
 </div>
 <% @opponent_ships = [] %>
-
-<%= render "shared/attack_board" %>
-
-<div class="attack_box">
-<h3>Enter Attack Coordinate</h3>
-<%=  form_tag(controller: "games", action: "attack", method: "post") do %>
-<%= text_field :attack, :pasta %>
-<%= submit_tag %>
-<%end%>
-</div>
 
 
 
 
 <div class="create_board">
+
   <div class="set_board">
     <h1>Set Your Board</h1>
     <%= render "shared/new_board"%>
@@ -52,7 +53,7 @@
       <%= radio_button_tag(:ship, 1) %>
       <%= label_tag(:carrier, "Carrier") %><br>
       <%= radio_button_tag(:ship, 2) %>
-      <%= label_tag(:battleship, "Battlehip") %><br>
+      <%= label_tag(:battleship, "Battleship") %><br>
       <%= radio_button_tag(:ship, 3) %>
       <%= label_tag(:submarine, "Submarine") %><br>
       <%= radio_button_tag(:ship, 4) %>
@@ -80,8 +81,19 @@
 
       </div>
   <%end%>
+
+
   </div>
+
+
+<div class=attack_board>
+   <h1>Attack Your Opponent</h1>
+    <%= render "shared/attack_board" %>
 </div>
 
+
+
+
+</div>
 
 
