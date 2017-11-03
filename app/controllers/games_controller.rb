@@ -4,8 +4,14 @@ class GamesController < ApplicationController
   end
 
   def show
+    @player_ships = []
     game = Game.find(params[:id])
-    render locals: {game: game}
+    players_coords = game.game_ships.find_by(player_id: session[:user_id]).coordinates
+    players_coords.each do |coordinate|
+       @player_ships.push(coordinate)
+    end
+
+    render locals: {game: game, player_ships: @player_ships}
 
   end
 
@@ -16,15 +22,15 @@ class GamesController < ApplicationController
  end
 
 
- # Game.find(params[:id]).game_ships.find(session[:user_id]).game_ship_coordinates
-
   def ships
+    #create ship
     ship = GameShip.create({game_id: params[:id], player_id: params[:player_id], ship_id: params[:ship]})
 
+    #create ship's first coord
     starting_coordinate = Coordinate.find_by( x_position: params[:starting_coordinate][:pasta][0], y_position: params[:starting_coordinate][:pasta][-1])
-
     GameShipCoordinate.create({coordinate_id: starting_coordinate.id, game_ship: ship})
 
+    #create remaining coords for ship
     i=0
     continue_coord = starting_coordinate
     while i < Ship.find(ship.ship_id).length-1
@@ -38,6 +44,13 @@ class GamesController < ApplicationController
       continue_coord = Coordinate.find(new_coord.coordinate_id)
       i+=1
     end
+
+    #add ships's coordinates to array of all player's ships' coords
+    # ship.game_ship_coordinates.each do |coordinate|
+    #   @player_ships.push(Coordinate.find(coordinate.coordinate_id))
+    # end
+
+    # Game.find(params[:id]).game_ships.find(session[:user_id]).game_ship_coordinates
     binding.pry
   end
 
