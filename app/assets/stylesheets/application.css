@@ -1,8 +1,19 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
-/*
+
+
 div {
   border: 1px solid red;
-}*/
+}
+
+h1 {
+   font-family: 'Oswald'; 
+   font-size: 75px;
+}
+
+* {
+ font-family: 'Exo', sans-serif; 
+}
+
 
 .title {
   text-align: center;
@@ -26,7 +37,7 @@ div {
 }
 
 .coord {
-  background-color: lightgrey;
+  background-color: #989FA8;
   height: 50px;
   width: 50px;
 }
@@ -47,13 +58,13 @@ div {
 
 
 .my_board .coord {
-  background-color: lightblue;
+  background-color: #378A9E;
   height: 50px;
   width: 50px;
 
 }
 .opponent_board .coord {
-  background-color: pink;
+  background-color: #A0B9BB;
   height: 50px;
   width: 50px;
 
