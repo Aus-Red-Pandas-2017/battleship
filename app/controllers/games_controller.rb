@@ -88,6 +88,7 @@ class GamesController < ApplicationController
     game = Game.find(params[:id])
 
     if current_player1_id == session[:user_id]
+
       @all_player2_ship_coords = []
        @player2_ships = Game.find(params[:id]).game_ships.where(player_id: current_player2_id)
 
@@ -99,39 +100,33 @@ class GamesController < ApplicationController
            if target.coordinate_id == attack_coordinate.id
             target.is_hit = true
             target.save
+
             end
           end
 
         end
 
-      #  @player2_ships.each do |ship|
-      #   ship.coordinates.each do |coordinate|
-      #     @all_player2_ship_coords.push(Coordinate.find(coordinate.id))
-      #   end
-      # end
-      # @all_player2_ship_coords.include?(attack_coordinate)
-
     else
+
 
       @all_player1_ship_coords = []
       @player1_ships = Game.find(params[:id]).game_ships.where(player_id: current_player1_id)
 
       targets = []
+
       @player1_ships.each do |ship|
         targets.push(ship.game_ship_coordinates)
+
           targets[0].each do |target|
+
               if target.coordinate_id == attack_coordinate.id
               target.is_hit = true
               target.save
+              binding.pry
+
               end
           end
       end
-
-       # @player1_ships.each do |ship|
-       #  ship.coordinates.each do |coordinate|
-       #    @all_player1_ship_coords.push(Coordinate.find(coordinate.id))
-       #  end
-       # end
      end
   end
 
