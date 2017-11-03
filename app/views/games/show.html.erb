@@ -23,6 +23,7 @@
   <%= button_to 'Check', check_game_path(game), :method => :get, remote: true %>
   </div>
 </div>
+
 <% @opponent_ships = [] %>
 
 <%= render partial: "shared/attack_board", locals: {opponent_ships: opponent_ships} %>
@@ -41,7 +42,9 @@
 
 
 
+
 <div class="create_board">
+
   <div class="set_board">
     <h1>Set Your Board</h1>
     <%= render "shared/new_board"%>
@@ -55,7 +58,7 @@
       <%= radio_button_tag(:ship, 1) %>
       <%= label_tag(:carrier, "Carrier") %><br>
       <%= radio_button_tag(:ship, 2) %>
-      <%= label_tag(:battleship, "Battlehip") %><br>
+      <%= label_tag(:battleship, "Battleship") %><br>
       <%= radio_button_tag(:ship, 3) %>
       <%= label_tag(:submarine, "Submarine") %><br>
       <%= radio_button_tag(:ship, 4) %>
@@ -83,8 +86,10 @@
 
       </div>
   <%end%>
-  </div>
-</div>
 
+
+  </div>
+
+</div>
 
 

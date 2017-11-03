@@ -1,5 +1,5 @@
 
-<div class="title"><h1> SHIPLY HOME INDEX </h1></div>
+<div class="title"><h1> SHIPLY: A BATTLESHIP GAME </h1></div>
 
 <div class="both_boards">
 	<div class="my_board">
@@ -20,22 +20,21 @@
 </div>
 
 <div class="game_list">
-	<!-- <ul> -->
+	<ul>
 	<%if session[:user_id]%>
 		<% @games.each do |game| %>
 	<%if game.player2_id == nil && game.player1_id != session[:user_id] %>	
-	 <!-- <li class="join_game">  -->
+	 <li class="join_game"> 
 		  <%= game.id %> <%= link_to 'Join', join_game_path(game) %>
-	  <!-- </li> -->
+	 </li>
 
   <%elsif game.player1_id == session[:user_id] || game.player2_id == session[:user_id] %>
-	  <!-- <li class="my_game"> -->
-		  <%= game.id %> <%= link_to 'My Games', game_path(game) %>
-	  <!-- </li> -->
-	  
-	 <!-- </ul>	  -->
-</div>
+	  <li class="my_game">
+		  <%= game.id %> <%= link_to 'Active', game_path(game) %>
+	<% end %>
+	<% end %>
+	<% end %>
+		</li>
+	</ul>	
 
-<% end %>
-<% end %>
-<% end %>
+</div>
