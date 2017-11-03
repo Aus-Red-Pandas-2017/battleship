@@ -5,13 +5,17 @@
   border: 1px solid red;
 }*/
 
+/*----------------------global attrs -----------------------*/
+
 
 h1 {
    font-family: 'Oswald'; 
    font-size: 75px;
    color: #2C3256; 
-   /*color: navy;*/
+   letter-spacing: 2px;
+
 }
+
 
 p {
   font-size: 20px;
@@ -22,16 +26,26 @@ p {
  color: #2C3256; 
 }
 
+body {
+/*  background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);*/
+background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+}
 
+
+
+
+/*----------------------register form -----------------------*/
 .new_user_form {
   padding: 30px;
   position: absolute;
-  width: 300px;
+  width: 250px;
   height: 300px;
   z-index: 15;
-  top: 25%;
+  top: 35%;
   left: 50%;
   margin: -100px 0 0 -150px;
+  border: 3px solid #2C3256;
+  border-radius: 8px;
 }
 
 
@@ -45,8 +59,7 @@ p {
   height: 40px; 
   font-size: 22px;
   border-radius: 10px;
-  margin-left: 3%;
-  margin-top: 3%;
+  margin-left: 25%;
   color: #2C3256;
 }
 
@@ -55,12 +68,50 @@ p {
   width: 215px; 
   height: 30px; 
   font-size: 22px;
-  /*border-radius: 3px;*/
+}
+
+
+
+/*----------------------sign in form -----------------------*/
+.new_session_form {
+  padding: 30px;
+  position: absolute;
+  width: 250px;
+  height: 300px;
+  z-index: 15;
+  top: 35%;
+  left: 50%;
+  margin: -100px 0 0 -150px;
+  border: 3px solid #2C3256;
+  border-radius: 8px;
+}
+
+
+.new_session_form label {
+  font-size: 50px;
+}
+
+
+.new_session_form input[type="submit"] {
+  width: 150px; 
+  height: 40px; 
+  font-size: 22px;
+  border-radius: 10px;
+  margin-left: 18%;
+  color: #2C3256;
+}
+
+
+.new_session_form input[type="text"] {
+  width: 215px; 
+  height: 30px; 
+  font-size: 22px;
 }
 
 
 
 
+/*----------------------set your ship buttons -----------------------*/
 
 .poll_buttons {
     position: absolute;
@@ -117,38 +168,60 @@ p {
 
 
 
-/*DIV STYLINGS*/
+.coordinate_box input[type="text"] {
+  width: 225px; 
+  height: 25px; 
+  font-size: 15px;
+}
+
+
+/*----------------------big div settings -----------------------*/
 .headings {
   display: inline-block;
   margin-top: 2%;
   margin-left: 5%;
-  /*float: right;*/
 }
 
 
 .title {
   text-align: center;
-  /*display: inline;*/
-}
-
-.player_ships {
-  background-color: black;
-
 }
 
 
+
+/*----------------------- game players -----------------*/
+
+/*.game_players {
+  display: inline-block;
+}
+*/
+.game_players{
+    position: absolute;
+    right: 20px;
+    top: 250px;
+    padding: 10px;
+}
+
+
+
+/*------------------------set ship form------------------*/
 
 .set_ship_form {
   float: right;
   display: inline-block;
-  margin-right: 30%;
+  margin-right: 28%;
   margin-top: 10%;
   font-size: 23px;
-
+  padding: 10px;
 }
 
 
 
+
+/*---------------------board attrs---------------------*/
+.player_ships {
+  background-color: black;
+}
 
 
 .set_board {
@@ -164,7 +237,6 @@ p {
   width: 50px;
 }
 
-
 .both_boards {
   text-align: center;
   float: right;
@@ -173,22 +245,16 @@ p {
   padding: 5px;
 }
 
-
-
 .my_board{
   display: inline-block;
   text-align: center;
   padding: 8px;
-/*  float: right;
-  margin-right: 10%;*/
 }
 
 .opponent_board{
   display: inline-block;
   text-align: center;
   padding: 8px;
-/*  float: left;
-  margin-left: 10%;*/
 }
 
 
@@ -199,13 +265,19 @@ p {
   width: 50px;
 
 }
+
 .opponent_board .coord {
   background-color: #A0B9BB;
   border-radius: 8px;
   height: 50px;
   width: 50px;
-
 }
+ /*----------------------open games list--------------*/
+
+
+/*.game_list {
+  border: 1px solid red;
+}*/
 
 
 
@@ -218,11 +290,7 @@ p {
 
 
 
-
-
-
-
-/*came with*/
+/*------------------------do not touch---------------*/
 
 * {
   margin: 0;

@@ -17,17 +17,21 @@
 	<%= button_to "Create Game", action: "create" %>
 </div>
 
-<%if session[:user_id]%>
-	<% @games.each do |game| %>
-<%if game.player2_id == nil && game.player1_id != session[:user_id] %>
-<div>
-  <%= game.id %>
-  <%= link_to 'Join', join_game_path(game) %>
-</div>
+<div class="game_list">
+	<!-- <ul> -->
+	<%if session[:user_id]%>
+		<% @games.each do |game| %>
+	<%if game.player2_id == nil && game.player1_id != session[:user_id] %>	
+	 <!-- <li class="join_game">  -->
+		  <%= game.id %> <%= link_to 'Join', join_game_path(game) %>
+	  <!-- </li> -->
+
   <%elsif game.player1_id == session[:user_id] || game.player2_id == session[:user_id] %>
-<div>
-  <%= game.id %>
-  <%= link_to 'My Games', game_path(game) %>
+	  <!-- <li class="my_game"> -->
+		  <%= game.id %> <%= link_to 'My Games', game_path(game) %>
+	  <!-- </li> -->
+	  
+	 <!-- </ul>	  -->
 </div>
 
 <% end %>
