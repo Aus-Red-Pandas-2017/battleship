@@ -14,41 +14,44 @@
 </div>
 
 
-<div class="poll_buttons">
-  <div class="pass">
-  <%= button_to 'Pass', pass_game_path(game), :method => :patch %>
+  <div class="poll_buttons">
+    <div class="pass">
+    <%= button_to 'Pass', pass_game_path(game), :method => :patch %>
+    </div>
+
+    <div class="check">
+    <%= button_to 'Check', check_game_path(game), :method => :get, remote: true %>
+    </div>
   </div>
 
-  <div class="check">
-  <%= button_to 'Check', check_game_path(game), :method => :get, remote: true %>
+
+
+  <div class="attack_board">
+      <h1>Attack Your Opponent</h1>
+
+      <% @opponent_ships = [] %>
+        <%= render partial: "shared/attack_board", locals: {opponent_ships: opponent_ships} %>
   </div>
-</div>
-
-<% @opponent_ships = [] %>
-
-<%= render partial: "shared/attack_board", locals: {opponent_ships: opponent_ships} %>
 
 
-<% if game.turn_id == session[:user_id]%>
-<div class="attack_box">
-<h3>Enter Attack Coordinate</h3>
-<%=  form_tag(controller: "games", action: "attack", method: "post") do %>
-<%= text_field :attack, :pasta %>
-<%= submit_tag %>
-<%end%>
-</div>
-<%end %>
-
-
+    <div class="poll_buttons" id="attack_box">
+    <% if game.turn_id == session[:user_id]%>
+      
+        <h3>Enter Attack Coordinate</h3>
+        <%=  form_tag(controller: "games", action: "attack", method: "post") do %>
+        <%= text_field :attack, :pasta %>
+        <%= submit_tag %>
+        <%end%>
+    <%end %>
+     </div>
 
 
 
 <div class="create_board">
-
-  <div class="set_board">
-    <h1>Set Your Board</h1>
-    <%= render "shared/new_board"%>
-  </div>
+    <div class="set_board">
+      <h1>Set Your Board</h1>
+      <%= render "shared/new_board"%>
+    </div>
 
   <div class="set_ship_form">
     <%=  form_tag(controller: "games", action: "ships", method: "post") do %>
@@ -84,9 +87,9 @@
         <!-- <#%= hidden_field_tag :starting_coordinate, something %> -->
       <%= submit_tag %>
 
-      </div>
-  <%end%>
-
+    
+    <%end%>
+  </div>
 
   </div>
 
