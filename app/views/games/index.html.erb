@@ -2,10 +2,15 @@
 
 <%if session[:user_id]%>
 <% @games.each do |game| %>
-<%if game.player2_id == nil %>
+<%if game.player2_id == nil && game.player1_id != session[:user_id] %>
 <div>
   <%= game.id %>
   <%= link_to 'Join', join_game_path(game) %>
+</div>
+  <%elsif game.player1_id == session[:user_id] || game.player2_id == session[:user_id] %>
+<div>
+  <%= game.id %>
+  <%= link_to 'My Games', game_path(game) %>
 </div>
 
 <% end %>

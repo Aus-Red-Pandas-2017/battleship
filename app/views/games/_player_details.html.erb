@@ -1,0 +1,9 @@
+You are ID(<%= session[:user_id]%>)
+<br>
+
+
+Player1 is <%=game.player1.username%> (ID: <%= game.player1_id %>)
+<br>
+Player2 is <%=game.player2.username%> (ID: <%= game.player2_id %>)
+<br>
+It is <%= game.active_player.username %>'s (ID:<%= game.active_player.id%>) turn.
