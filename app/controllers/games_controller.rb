@@ -83,6 +83,7 @@ class GamesController < ApplicationController
   def attack
     attack = params[:attack][:pasta]
     attack_coordinate = Coordinate.find_by( x_position: params[:attack][:pasta][0], y_position: params[:attack][:pasta][-1])
+
     current_player1_id = Game.find(params[:id]).player1_id
     current_player2_id = Game.find(params[:id]).player2_id
     game = Game.find(params[:id])
@@ -90,7 +91,7 @@ class GamesController < ApplicationController
     if current_player1_id == session[:user_id]
 
       @all_player2_ship_coords = []
-       @player2_ships = Game.find(params[:id]).game_ships.where(player_id: current_player2_id)
+      @player2_ships = Game.find(params[:id]).game_ships.where(player_id: current_player2_id)
 
 
       targets = []
@@ -122,7 +123,7 @@ class GamesController < ApplicationController
               if target.coordinate_id == attack_coordinate.id
               target.is_hit = true
               target.save
-              binding.pry
+          
 
               end
           end

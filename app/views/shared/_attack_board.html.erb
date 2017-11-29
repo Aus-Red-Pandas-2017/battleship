@@ -20,6 +20,10 @@
     <% Coordinate.all[0..9].each do |coordinate| %>
       <% if player_ships.include?(coordinate)%>
         <td class="hit_ships" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%>
+       <!-- elsif this is a missed coordinate    -->
+       <!-- how do we find a missed coordinate? and save that data? 
+       where does that come from? ok. -->
+       <!-- then like, render a different class, you know, the miss class -->
       <%else%>
         <td class="coord" data-coordinate="<%=coordinate.x_position%><%=coordinate.y_position%>" data-id="<%=coordinate.id%>"><%coordinate%></td>
         <%end%>
