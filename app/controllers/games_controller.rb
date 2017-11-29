@@ -141,8 +141,16 @@ class GamesController < ApplicationController
     ship = GameShip.create({game_id: params[:id], player_id: params[:player_id], ship_id: params[:ship]})
 
     #create ship's first coord
-    starting_coordinate = Coordinate.find_by( x_position: params[:starting_coordinate][:pasta][0], y_position: params[:starting_coordinate][:pasta][-1])
+    our_y = params[:starting_coordinate][:pasta][-1]
+    if our_y == "0"
+      our_y = "10"
+    end
+    
+    starting_coordinate = Coordinate.find_by( x_position: params[:starting_coordinate][:pasta][0], y_position: our_y)
+    #if starting_coordinate
+    # binding.pry
     GameShipCoordinate.create({coordinate_id: starting_coordinate.id, game_ship: ship})
+
 
     #create remaining coords for ship
     i=0
