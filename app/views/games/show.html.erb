@@ -1,17 +1,5 @@
 
-<div class="game_players">
 
-  <% if game.player1_id && game.player2_id %>
-  You are ID(<%= session[:user_id]%>)
-  <br>
-  Player1 is <%=game.player1.username%> (ID: <%= game.player1_id %>)
-  <br>
-  Player2 is <%=game.player2.username%> (ID: <%= game.player2_id %>)
-  <br>
-  It is <%= game.active_player.username %>'s (ID:<%= game.active_player.id%>) turn.
-  <!-- <#%= render "player_details", locals: {game: @game} %> -->
-  <% end %>
-</div>
 
 
   <div class="poll_buttons">
@@ -19,9 +7,9 @@
     <%= button_to 'Pass', pass_game_path(game), :method => :patch %>
     </div>
 
-    <div class="check">
-    <%= button_to 'Check', check_game_path(game), :method => :get, remote: true %>
-    </div>
+    <!-- <div class="check">
+    <#%= button_to 'Check', check_game_path(game), :method => :get, remote: true %>
+    </div> -->
   </div>
 
 
@@ -40,7 +28,7 @@
         <h3>Enter Attack Coordinate</h3>
         <%=  form_tag(controller: "games", action: "attack", method: "post") do %>
         <%= text_field :attack, :pasta %>
-        <%= submit_tag %>
+        <%= submit_tag(value = "Attack") %>
         <%end%>
     <%end %>
      </div>
@@ -85,7 +73,7 @@
         <br>
         <%= hidden_field_tag :player_id, session[:user_id] %>
         <!-- <#%= hidden_field_tag :starting_coordinate, something %> -->
-      <%= submit_tag %>
+      <%= submit_tag(value = "Place Ship") %>
 
     
     <%end%>
