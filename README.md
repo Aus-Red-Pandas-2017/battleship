@@ -1,24 +1,22 @@
-# README
+# Shiply App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Check out the site [here](http://shiply.herokuapp.com/)!
 
-Things you may want to cover:
+## Description:
 
-* Ruby version
+Shiply -- A browser based version of Battleship.
 
-* System dependencies
+## Tech:
 
-* Configuration
+- Ruby on Rails
+- PostgreSQL
+- Javascript / jQuery
+- AJAX
+- Bootstrap
 
-* Database creation
 
-* Database initialization
+## Developers:
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- [Chris Friedman](https://github.com/khristoph)
+- [Andrew Grzegorek](https://github.com/agrzegorek)
+- [Gaby Ramirez](https://github.com/GabrielaSRamirez94)
